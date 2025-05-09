@@ -57,3 +57,12 @@ function displayResults() {
                 const curr = item.currencies
                     ? Object.values(item.currencies).map(c => `${c.name} (${c.symbol})`).join(', ')
                     : 'Not available';
+                    // Format language information
+                const lang = item.languages
+                ? Object.values(item.languages).join(', ')
+                : 'Not available';
+
+            // Get flag URL and format population
+            const flag = item.flags && item.flags.svg ? item.flags.svg : '';
+            const pop = item.population ? item.population.toLocaleString() : 'Not available';
+
