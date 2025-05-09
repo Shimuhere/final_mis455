@@ -23,3 +23,16 @@ function searchCountry() {
     localStorage.setItem('countrySearch', name);
     window.location.href = 'result.html';
 }
+// Results display function
+// Fetches and displays country data from the API
+function displayResults() {
+    const resultBox = document.getElementById('result');
+    if (!resultBox) return;
+
+    // Get search term from localStorage
+    let searched = localStorage.getItem('countrySearch');
+    if (!searched || searched.trim() === "") {
+        window.location.href = 'index.html';
+        return;
+    }
+    
