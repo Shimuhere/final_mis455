@@ -44,3 +44,16 @@ function displayResults() {
                 resultBox.innerHTML = '<p class="error">Country not found. Try again.</p>';
                 return;
             }
+            // Prepare result container for new content
+            resultBox.innerHTML = '';
+            resultBox.style.opacity = 0;
+            resultBox.style.transition = 'opacity 0.5s ease';
+
+            // Process each country in the response
+            for (let i = 0; i < body.length; i++) {
+                const item = body[i];
+
+                // Format currency information
+                const curr = item.currencies
+                    ? Object.values(item.currencies).map(c => `${c.name} (${c.symbol})`).join(', ')
+                    : 'Not available';
