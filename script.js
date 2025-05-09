@@ -35,4 +35,7 @@ function displayResults() {
         window.location.href = 'index.html';
         return;
     }
-    
+    // Fetch country data from API and handle the response
+    fetch(`https://restcountries.com/v3.1/name/${searched}`)
+        .then(res => res.json().then(data => ({ status: res.status, body: data })))
+        .then(({ status, body }) => {
