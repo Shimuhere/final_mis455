@@ -65,4 +65,22 @@ function displayResults() {
             // Get flag URL and format population
             const flag = item.flags && item.flags.svg ? item.flags.svg : '';
             const pop = item.population ? item.population.toLocaleString() : 'Not available';
+            // Create HTML for country card
+            const html = `
+            <div class="country-card">
+                <img src="${flag}" alt="${item.name.common} flag" class="country-flag">
+                <div class="country-info">
+                    <h2>${item.name.official}</h2>
+                    <p><strong>Common Name:</strong> ${item.name.common}</p>
+                    <p><strong>Capital:</strong> ${item.capital ? item.capital[0] : 'N/A'}</p>
+                    <p><strong>Currency:</strong> ${curr}</p>
+                    <p><strong>Languages:</strong> ${lang}</p>
+                    <p><strong>Population:</strong> ${pop}</p>
+                    <p><strong>Region:</strong> ${item.region || 'Not available'}</p>
+                    <p><strong>Area:</strong> ${item.area ? item.area.toLocaleString() + ' km²' : 'Not available'}</p>
+                    <p><strong>Timezones:</strong> ${item.timezones ? item.timezones.join(', ') : 'Not available'}</p>
+                </div>
+            </div>
+        `;
+
 
