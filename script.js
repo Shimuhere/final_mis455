@@ -82,5 +82,27 @@ function displayResults() {
                 </div>
             </div>
         `;
+        // Add country card to results
+        resultBox.innerHTML += html;
+    }
+
+    // Fade in the results
+    setTimeout(() => {
+        resultBox.style.opacity = 1;
+    }, 100);
+})
+.catch(err => {
+    console.log(err);
+    resultBox.innerHTML = '<p class="error">Something went wrong. Please refresh and try again.</p>';
+});
+
+// Clear the search term from localStorage
+localStorage.removeItem('countrySearch');
+}
+
+// Check if we're on the results page and display results if we are
+if (window.location.pathname.endsWith('result.html')) {
+displayResults();
+}
 
 
