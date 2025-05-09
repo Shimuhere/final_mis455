@@ -39,3 +39,8 @@ function displayResults() {
     fetch(`https://restcountries.com/v3.1/name/${searched}`)
         .then(res => res.json().then(data => ({ status: res.status, body: data })))
         .then(({ status, body }) => {
+            // Handle 404 or invalid response
+            if (status === 404 || !Array.isArray(body)) {
+                resultBox.innerHTML = '<p class="error">Country not found. Try again.</p>';
+                return;
+            }
